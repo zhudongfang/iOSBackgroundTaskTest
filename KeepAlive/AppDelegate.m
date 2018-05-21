@@ -7,44 +7,170 @@
 //
 
 #import "AppDelegate.h"
+#import "BackgroundAudioPlayer.h"
+#import "BackgroundDownloader.h"
+#import "DeviceMoveDectector.h"
+#import "Utils.h"
+
+#import <AVFoundation/AVFoundation.h>
+
+
+#define BackgroundFetchUrl @"http://img1.lespark.cn/0prqPrk2O6GI8StHy3cX"
+
 
 @interface AppDelegate ()
+
+@property (nonatomic, assign) UIBackgroundTaskIdentifier bgTask;
 
 @end
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSLog(@"AppDelegate: applicationDidFinishLaunchingWithOptions");
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    // Reister Remote Notification
+    [application registerForRemoteNotifications];
+    
+    // Register Local Notification
+    NSInteger types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *local = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:local];
+    
+    // UIApplicationBackgroundFetchIntervalMinimum
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
+    [application cancelAllLocalNotifications];
+    
+    // 检测手机移动
+    [[DeviceMoveDectector sharedInstance] start];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[Utils stringFromDate:[NSDate date]]
+                                              forKey:@"last_launch_time"];
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    sleep(2);
     return YES;
 }
 
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    NSLog(@"AppDelegate: 进入前台");
+    [[BackgroundAudioPlayer sharedInstance] stop];
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    NSLog(@"AppDelegate: 进入后台");
+    
+    BOOL isSysBackgroundTaskEnabled = NO;
+    BOOL isDownloadFileEnabled = NO;
+    BOOL isBackgroundMusicEnabled = NO;
+    
+    // UIApplication#beginBackgroundTask
+    if (isSysBackgroundTaskEnabled)
+    {
+        NSLog(@"后台 beginBaskgroundTask");
+        double beginTime = CACurrentMediaTime();
+        __weak typeof (self) weakSelf = self;
+        self.bgTask = [UIApplication.sharedApplication beginBackgroundTaskWithName:@"KeepAlive"
+                                                                 expirationHandler:
+                       ^{
+                           NSLog(@"bgTask expired: %f", CACurrentMediaTime() - beginTime);
+                           
+                           [application endBackgroundTask:weakSelf.bgTask];
+                           weakSelf.bgTask = UIBackgroundTaskInvalid;
+                       }];
+        
+        NSLog(@"ttl: %f", UIApplication.sharedApplication.backgroundTimeRemaining);
+    }
+    
+    // 下载文件
+    if (isDownloadFileEnabled)
+    {
+        NSLog(@"后台 下载文件");
+        [[BackgroundDownloader sharedInstance] runOnComletion:^{
+            NSLog(@"BackgroundDownload task finished");
+        }];
+    }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    // 后台音乐
+    if (isBackgroundMusicEnabled)
+    {
+        NSLog(@"后台 播放音乐");
+        [[BackgroundAudioPlayer sharedInstance] play];
+    }
 }
 
+#pragma mark -
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
+{
+    NSLog(@"backgroundURLSessionTask: %@", identifier);
+    
+    [Utils showLocalNotification:@"download success from appd elegate"];
+    completionHandler();
+}
+#pragma mark - 推送
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"device token: %@", deviceToken);
 }
 
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"");
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"remoetNotification received: %f", application.backgroundTimeRemaining);
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        completionHandler(UIBackgroundFetchResultNoData);
+    });
+    
+    // 后台无法启动播放音频
+    // [[BackgroundAudioPlayer sharedInstance] play];
+    
+    NSString *resUrl = userInfo[@"aps"][@"res_url"];
+    if (!resUrl) {
+        resUrl = @"http://img1.lespark.cn/86AAAODxFbBSXQMaFRCi";
+    }
+    
+    [[BackgroundDownloader sharedInstance] download:resUrl];
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    if (!userInfo[@"aps"][@"alert"]) {
+        [Utils showLocalNotification:@"Remote Notification Received"];
+    }
+
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+#pragma mark - Backgroud Fetch
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"Background Fetch: %f", application.backgroundTimeRemaining);
+
+    [[BackgroundDownloader sharedInstance] download:BackgroundFetchUrl];
+    [[NSUserDefaults standardUserDefaults] setObject:[Utils stringFromDate:[NSDate date]]
+                                              forKey:@"last_bg_fetch_time"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [Utils showLocalNotification:[NSString stringWithFormat:@"Background Fetch: %f", application.backgroundTimeRemaining]];
+    });
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    NSLog(@"AppDelegate: 即将终止");
 }
 
 

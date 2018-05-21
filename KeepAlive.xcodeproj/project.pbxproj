@@ -7,15 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78786DA720B4D33400AC3C5F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78786DA620B4D33400AC3C5F /* CoreLocation.framework */; };
+		78786DC220B4D84B00AC3C5F /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78786DB920B4D84B00AC3C5F /* INTULocationRequest.m */; };
+		78786DC320B4D84B00AC3C5F /* INTUHeadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78786DBE20B4D84B00AC3C5F /* INTUHeadingRequest.m */; };
+		78786DC420B4D84B00AC3C5F /* INTURequestIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 78786DBF20B4D84B00AC3C5F /* INTURequestIDGenerator.m */; };
+		78786DC520B4D84B00AC3C5F /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78786DC020B4D84B00AC3C5F /* INTULocationManager.m */; };
+		B25A081C20B400D300011DFF /* Uitls.m in Sources */ = {isa = PBXBuildFile; fileRef = B25A081B20B400D300011DFF /* Uitls.m */; };
+		B25A082420B511D200011DFF /* BackgroundAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B25A082320B511D200011DFF /* BackgroundAudioPlayer.m */; };
+		B25A082720B5186200011DFF /* DeviceMoveDectector.m in Sources */ = {isa = PBXBuildFile; fileRef = B25A082620B5186200011DFF /* DeviceMoveDectector.m */; };
+		B25A082A20B51C0400011DFF /* BackgroundDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = B25A082920B51C0400011DFF /* BackgroundDownloader.m */; };
+		B27A2A2F20B2EE7C004EDB23 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B27A2A2E20B2EE7C004EDB23 /* Toast.m */; };
 		B2CE2F1320AD582E005B5B1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CE2F1220AD582E005B5B1A /* AppDelegate.m */; };
 		B2CE2F1620AD582E005B5B1A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CE2F1520AD582E005B5B1A /* ViewController.m */; };
 		B2CE2F1920AD582E005B5B1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2CE2F1720AD582E005B5B1A /* Main.storyboard */; };
 		B2CE2F1B20AD5830005B5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2CE2F1A20AD5830005B5B1A /* Assets.xcassets */; };
 		B2CE2F1E20AD5830005B5B1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2CE2F1C20AD5830005B5B1A /* LaunchScreen.storyboard */; };
 		B2CE2F2120AD5830005B5B1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CE2F2020AD5830005B5B1A /* main.m */; };
+		B2CE2F2820AD75B5005B5B1A /* 10years.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2CE2F2720AD75B5005B5B1A /* 10years.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78786DA620B4D33400AC3C5F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		78786DB820B4D84B00AC3C5F /* INTUHeadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTUHeadingRequest.h; sourceTree = "<group>"; };
+		78786DB920B4D84B00AC3C5F /* INTULocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationRequest.m; sourceTree = "<group>"; };
+		78786DBA20B4D84B00AC3C5F /* INTURequestIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTURequestIDGenerator.h; sourceTree = "<group>"; };
+		78786DBB20B4D84B00AC3C5F /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager+Internal.h"; sourceTree = "<group>"; };
+		78786DBC20B4D84B00AC3C5F /* INTULocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationManager.h; sourceTree = "<group>"; };
+		78786DBD20B4D84B00AC3C5F /* INTULocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequest.h; sourceTree = "<group>"; };
+		78786DBE20B4D84B00AC3C5F /* INTUHeadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTUHeadingRequest.m; sourceTree = "<group>"; };
+		78786DBF20B4D84B00AC3C5F /* INTURequestIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTURequestIDGenerator.m; sourceTree = "<group>"; };
+		78786DC020B4D84B00AC3C5F /* INTULocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationManager.m; sourceTree = "<group>"; };
+		78786DC120B4D84B00AC3C5F /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequestDefines.h; sourceTree = "<group>"; };
+		B25A081A20B400D300011DFF /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		B25A081B20B400D300011DFF /* Uitls.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uitls.m; sourceTree = "<group>"; };
+		B25A082220B511D200011DFF /* BackgroundAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundAudioPlayer.h; sourceTree = "<group>"; };
+		B25A082320B511D200011DFF /* BackgroundAudioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundAudioPlayer.m; sourceTree = "<group>"; };
+		B25A082520B5186200011DFF /* DeviceMoveDectector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMoveDectector.h; sourceTree = "<group>"; };
+		B25A082620B5186200011DFF /* DeviceMoveDectector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMoveDectector.m; sourceTree = "<group>"; };
+		B25A082820B51C0300011DFF /* BackgroundDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundDownloader.h; sourceTree = "<group>"; };
+		B25A082920B51C0400011DFF /* BackgroundDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundDownloader.m; sourceTree = "<group>"; };
+		B25A082B20B52ECA00011DFF /* KeepAlive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeepAlive.entitlements; sourceTree = "<group>"; };
+		B27A2A2D20B2EE7C004EDB23 /* Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
+		B27A2A2E20B2EE7C004EDB23 /* Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
 		B2CE2F0E20AD582E005B5B1A /* KeepAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CE2F1120AD582E005B5B1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2CE2F1220AD582E005B5B1A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +59,7 @@
 		B2CE2F1D20AD5830005B5B1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2CE2F1F20AD5830005B5B1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2CE2F2020AD5830005B5B1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B2CE2F2720AD75B5005B5B1A /* 10years.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10years.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +67,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78786DA720B4D33400AC3C5F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78786DA520B4D33400AC3C5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78786DA620B4D33400AC3C5F /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78786DB720B4D84B00AC3C5F /* INTULocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				78786DB820B4D84B00AC3C5F /* INTUHeadingRequest.h */,
+				78786DB920B4D84B00AC3C5F /* INTULocationRequest.m */,
+				78786DBA20B4D84B00AC3C5F /* INTURequestIDGenerator.h */,
+				78786DBB20B4D84B00AC3C5F /* INTULocationManager+Internal.h */,
+				78786DBC20B4D84B00AC3C5F /* INTULocationManager.h */,
+				78786DBD20B4D84B00AC3C5F /* INTULocationRequest.h */,
+				78786DBE20B4D84B00AC3C5F /* INTUHeadingRequest.m */,
+				78786DBF20B4D84B00AC3C5F /* INTURequestIDGenerator.m */,
+				78786DC020B4D84B00AC3C5F /* INTULocationManager.m */,
+				78786DC120B4D84B00AC3C5F /* INTULocationRequestDefines.h */,
+			);
+			path = INTULocationManager;
+			sourceTree = "<group>";
+		};
 		B2CE2F0520AD582E005B5B1A = {
 			isa = PBXGroup;
 			children = (
+				B25A082B20B52ECA00011DFF /* KeepAlive.entitlements */,
 				B2CE2F1020AD582E005B5B1A /* KeepAlive */,
 				B2CE2F0F20AD582E005B5B1A /* Products */,
+				78786DA520B4D33400AC3C5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +129,18 @@
 				B2CE2F1C20AD5830005B5B1A /* LaunchScreen.storyboard */,
 				B2CE2F1F20AD5830005B5B1A /* Info.plist */,
 				B2CE2F2020AD5830005B5B1A /* main.m */,
+				B2CE2F2720AD75B5005B5B1A /* 10years.mp3 */,
+				B27A2A2D20B2EE7C004EDB23 /* Toast.h */,
+				B27A2A2E20B2EE7C004EDB23 /* Toast.m */,
+				B25A081A20B400D300011DFF /* Utils.h */,
+				B25A081B20B400D300011DFF /* Uitls.m */,
+				78786DB720B4D84B00AC3C5F /* INTULocationManager */,
+				B25A082220B511D200011DFF /* BackgroundAudioPlayer.h */,
+				B25A082320B511D200011DFF /* BackgroundAudioPlayer.m */,
+				B25A082820B51C0300011DFF /* BackgroundDownloader.h */,
+				B25A082920B51C0400011DFF /* BackgroundDownloader.m */,
+				B25A082520B5186200011DFF /* DeviceMoveDectector.h */,
+				B25A082620B5186200011DFF /* DeviceMoveDectector.m */,
 			);
 			path = KeepAlive;
 			sourceTree = "<group>";
@@ -102,6 +176,14 @@
 				TargetAttributes = {
 					B2CE2F0D20AD582E005B5B1A = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -130,6 +212,7 @@
 			files = (
 				B2CE2F1E20AD5830005B5B1A /* LaunchScreen.storyboard in Resources */,
 				B2CE2F1B20AD5830005B5B1A /* Assets.xcassets in Resources */,
+				B2CE2F2820AD75B5005B5B1A /* 10years.mp3 in Resources */,
 				B2CE2F1920AD582E005B5B1A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,9 +224,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78786DC520B4D84B00AC3C5F /* INTULocationManager.m in Sources */,
+				78786DC320B4D84B00AC3C5F /* INTUHeadingRequest.m in Sources */,
+				B25A081C20B400D300011DFF /* Uitls.m in Sources */,
 				B2CE2F1620AD582E005B5B1A /* ViewController.m in Sources */,
+				78786DC420B4D84B00AC3C5F /* INTURequestIDGenerator.m in Sources */,
+				B27A2A2F20B2EE7C004EDB23 /* Toast.m in Sources */,
+				78786DC220B4D84B00AC3C5F /* INTULocationRequest.m in Sources */,
 				B2CE2F2120AD5830005B5B1A /* main.m in Sources */,
 				B2CE2F1320AD582E005B5B1A /* AppDelegate.m in Sources */,
+				B25A082720B5186200011DFF /* DeviceMoveDectector.m in Sources */,
+				B25A082A20B51C0400011DFF /* BackgroundDownloader.m in Sources */,
+				B25A082420B511D200011DFF /* BackgroundAudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,14 +375,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = KeepAlive.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = WF2F7K5D9E;
 				INFOPLIST_FILE = KeepAlive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "AudioServicesPlaySystemSound-kSystemSoundID-Vibrate-----PeonyPark.LesPark-International.KeepAlive";
+				PRODUCT_BUNDLE_IDENTIFIER = "PeonyPark.LesPark-International";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b5ad3666-4e9d-4938-9755-a76935ea674e";
+				PROVISIONING_PROFILE_SPECIFIER = "LesPark International Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -299,14 +396,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = KeepAlive.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KeepAlive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "AudioServicesPlaySystemSound-kSystemSoundID-Vibrate-----PeonyPark.LesPark-International.KeepAlive";
+				PRODUCT_BUNDLE_IDENTIFIER = "PeonyPark.LesPark-International";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

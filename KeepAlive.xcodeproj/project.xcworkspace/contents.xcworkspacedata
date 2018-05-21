@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KeepAlive.xcodeproj">
+      location = "self:/Users/chu/Desktop/KeepAlive/KeepAlive.xcodeproj">
    </FileRef>
 </Workspace>
